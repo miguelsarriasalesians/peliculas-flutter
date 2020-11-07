@@ -47,7 +47,12 @@ class PeliculasProvider {
 
   Future<List<Pelicula>> getEnCines() async {
 
-    final url = Uri.https(_url, '3/movie/now_playing', {
+    // final url = Uri.https(_url, '3/movie/now_playing', {
+    //   'api_key'  : _apikey,
+    //   'language' : _language
+    // });
+
+    final url = Uri.https(_url, '3/tv/on_the_air', {
       'api_key'  : _apikey,
       'language' : _language
     });
@@ -58,13 +63,19 @@ class PeliculasProvider {
 
 
   Future<List<Pelicula>> getPopulares() async {
-    
+
     if ( _cargando ) return [];
 
     _cargando = true;
     _popularesPage++;
 
-    final url = Uri.https(_url, '3/movie/popular', {
+    // final url = Uri.https(_url, '3/movie/popular', {
+    //   'api_key'  : _apikey,
+    //   'language' : _language,
+    //   'page'     : _popularesPage.toString()
+    // });
+
+    final url = Uri.https(_url, '3/tv/top_rated', {
       'api_key'  : _apikey,
       'language' : _language,
       'page'     : _popularesPage.toString()
@@ -82,10 +93,16 @@ class PeliculasProvider {
 
   Future<List<Actor>> getCast( String peliId ) async {
 
-    final url = Uri.https(_url, '3/movie/$peliId/credits', {
+    // final url = Uri.https(_url, '3/movie/$peliId/credits', {
+    //   'api_key'  : _apikey,
+    //   'language' : _language
+    // });
+
+    final url = Uri.https(_url, '3/tv/$peliId/credits', {
       'api_key'  : _apikey,
       'language' : _language
     });
+
 
     final resp = await http.get(url);
     final decodedData = json.decode( resp.body );
