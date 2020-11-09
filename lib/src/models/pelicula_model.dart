@@ -25,7 +25,7 @@ class Pelicula {
 
   int voteCount;
   int id;
-  // bool video;
+  bool video;
   double voteAverage;
   String title;
   double popularity;
@@ -41,7 +41,7 @@ class Pelicula {
   Pelicula({
     this.voteCount,
     this.id,
-    // this.video,
+    this.video,
     this.voteAverage,
     this.title,
     this.popularity,
@@ -59,15 +59,13 @@ class Pelicula {
 
     voteCount        = json['vote_count'];
     id               = json['id'];
-    // video            = json['video'];
+    video            = json['video'];
     voteAverage      = json['vote_average'] / 1;
-    // title            = json['title'];
-    title            = json['name'];
+    title            = json['title'];
     popularity       = json['popularity'] / 1;
     posterPath       = json['poster_path'];
     originalLanguage = json['original_language'];
-    // originalTitle    = json['original_title'];
-    originalTitle    = json['original_name'];
+    originalTitle    = json['original_title'];
     genreIds         = json['genre_ids'].cast<int>();
     backdropPath     = json['backdrop_path'];
     adult            = json['adult'];
